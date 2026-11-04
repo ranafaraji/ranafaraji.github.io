@@ -2,6 +2,10 @@ name: Deploy portfolio to GitHub Pages
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: ['pages build and deployment']
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -30,6 +34,9 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
