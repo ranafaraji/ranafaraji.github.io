@@ -1,0 +1,1 @@
+export default function Navigation(){return (<nav><a className="brand" href="#">Rana Faraji<span>.</span></a><div className="links"><a href="#work">Projects</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#contact">Get in touch ↗</a></div></nav>);}

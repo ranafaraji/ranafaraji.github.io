@@ -1,0 +1,1 @@
+export default function TechStrip(){return (<div className="ticker"><span>PYTHON / FASTAPI</span><span>AWS / SERVERLESS</span><span>C# / .NET</span><span>REACT / JAVASCRIPT</span><span>SQL / REDIS</span></div>);}
