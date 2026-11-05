@@ -39,7 +39,7 @@ jobs:
             try {
               const result = await github.request('GET /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}', {...context.repo, pages_deployment_id: id});
               core.info('Prior deployment status: ' + result.data.status);
-              if (!['succeed', 'succeeded', 'failed', 'cancelled', 'canceled'].includes(result.data.status)) {
+              if (result.data.status) {
                 await github.request('POST /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}/cancel', {...context.repo, pages_deployment_id: id});
                 core.info('Cancelled stuck prior deployment.');
               }
